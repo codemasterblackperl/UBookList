@@ -32,5 +32,27 @@ namespace UBookList.Controllers
         }
 
 
+        /// <summary>
+        /// get method for creates a book page
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Book book)
+        {
+            if (!ModelState.IsValid)
+                return View(book);
+
+            _db.Add(book);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

@@ -10,9 +10,10 @@ using UBookList.Models;
 namespace UBookList.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180301060127_updatedNamePropertyOnBookModel")]
+    partial class updatedNamePropertyOnBookModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
