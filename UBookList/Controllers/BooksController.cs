@@ -72,6 +72,73 @@ namespace UBookList.Controllers
 
         }
 
+        /// <summary>
+        /// gets book for edit
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var book = await _db.Books.SingleOrDefaultAsync(x => x.Id == id);
+
+            if (book == null)
+                return NotFound();
+
+            return View(book);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id,Book book)
+        {
+            if (id != book.Id)
+                return NotFound();
+
+            if (!ModelState.IsValid)
+                return View(book);
+
+            //_db.Books.Add(book);
+            _db.Books.Update(book);
+            await _db.SaveChangesAsync();
+
+            return View(book);
+        }
+
+        /// <summary>
+        /// delete the book
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var book = await _db.Books.SingleOrDefaultAsync(x => x.Id == id);
+            if (book == null)
+                return NotFound();
+
+            return View(book);
+        }
+
+        //[ActionName("Delete")] or you can also name anything as your method and mention delete in action name
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var book = await _db.Books.SingleOrDefaultAsync(x => x.Id == id);
+            if (book == null)
+                return NotFound();
+
+            _db.Books.Remove(book);
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
 
     }
 }
