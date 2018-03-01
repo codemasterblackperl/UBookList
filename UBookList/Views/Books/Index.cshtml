@@ -1,0 +1,38 @@
+﻿@model  IEnumerable<UBookList.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>List of Books </h2>
+<hr/>
+
+<a asp-action="Create" class="btn btn-sm btn-primary">Create</a>
+
+<hr/>
+<br/>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(m => m.Name);
+        </th>
+        <th/>
+    </tr>
+    @foreach(var book in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m=>book.Name);
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-sm btn-success" asp-route-id="@book.Id">Edit</a>
+                <a asp-action="Details" class="btn btn-sm btn-primary" asp-route-id="@book.Id">Details</a>
+                <a asp-action="Delete" class="btn btn-sm btn-danger" asp-route-id="@book.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<br/>
+
