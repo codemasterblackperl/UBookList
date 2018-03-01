@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using UBookList.Models;
 
 namespace UBookList.Controllers
@@ -51,6 +52,24 @@ namespace UBookList.Controllers
             _db.Add(book);
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// get details of the book
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var book = await _db.Books.SingleOrDefaultAsync(x => x.Id == id);
+
+            if (book == null)
+                return NotFound();
+
+            return View(book);
+
         }
 
 

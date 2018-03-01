@@ -1,0 +1,28 @@
+﻿@model UBookList.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details of book "@Model.Name"</h2>
+
+<hr/>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-sm-1">
+            <label asp-for="Name"></label>
+        </div>
+        <div class="col-sm-4">
+            <input asp-for="Name" disabled class="form-control" />
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="form-group">
+    <a asp-action="Edit" class="btn btn-sm btn-success" asp-route-id="@Model.Id">Edit</a>
+    <a asp-action="Index" class="btn btn-sm btn-primary">Back to List</a>
+</div>
+
