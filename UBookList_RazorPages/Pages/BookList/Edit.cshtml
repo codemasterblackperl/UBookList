@@ -1,0 +1,78 @@
+﻿@page
+@model UBookList_RazorPages.Pages.BookList.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit book </h2>
+
+<br />
+<br />
+
+<div style="border:1Px solid Grey;border-radius:5Px;padding:10Px;">
+    <form method="post">
+        <div style="padding-left:10Px;padding-top:10px;">
+            <input type="hidden" asp-for="Book.Id" />
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="Book.ISBN"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" asp-for="Book.ISBN" />
+                    </div>
+                </div>
+                <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="Book.Title"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" asp-for="Book.Title" />
+                    </div>
+                </div>
+                <span asp-validation-for="Book.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="Book.Author"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" asp-for="Book.Author" />
+                    </div>
+                </div>
+                <span asp-validation-for="Book.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="Book.Price"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" asp-for="Book.Price" />
+                    </div>
+                </div>
+                <span asp-validation-for="Book.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="Book.Availability"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" asp-for="Book.Availability" />
+                    </div>
+                </div>
+                <span asp-validation-for="Book.Availability" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-sm btn-primary" />
+                <a asp-page="Index" class="btn btn-sm btn-success">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
